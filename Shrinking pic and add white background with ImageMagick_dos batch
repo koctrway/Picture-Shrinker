@@ -1,0 +1,16 @@
+@echo off
+echo ----------------------------------------
+SETLOCAL enabledelayedexpansion
+chcp 65001>nul
+REM === 文字コードをUTFに設定。
+pushd %~dp0
+REM ↑このバッチのディレクトリをセット（以下のディレクトリのファイルを使用可能）
+
+
+REM === 画像をfor処理
+
+for %%a in (%*) do (
+
+convert "%%a" -resize "1000>x1000>" -background white -gravity center -extent 1000x -quality 85 "%~dp0\picture\%~n1_extented.jpg" 
+
+)
